@@ -1,2 +1,2 @@
-# Simple-Syrup
-An extremely simple puer javascript UI framework
+# Simple Syrup
+An extremely simple, pure javascript UI framework
