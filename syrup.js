@@ -81,11 +81,6 @@ var Syrup = (function(window, lenient){
 				}
 				addElementProperty(prototype, key);
 			});
-			var additions = Syrup.Additions;
-			Object.keys(additions).forEach(function(key){
-				var method = additions[key];
-				prototype[key] = method;
-			});
 			Syrup.Elements[tag] = method;
 			Syrup.Prototypes[tag] = prototype;
 		},
@@ -94,6 +89,12 @@ var Syrup = (function(window, lenient){
 		},
 		initialize:function(inside){
 			if (initialized){return container;}
+			//add default additions to root prototype
+			var additions = Syrup.Additions;
+			Object.keys(additions).forEach(function(key){
+				var method = additions[key];
+				Syrup.Prototypes.element[key] = method;
+			});
 			if (!Syrup.Elements.element){
 				function element(){}
 				element.prototype = Syrup.Prototypes.element;
@@ -161,7 +162,7 @@ var Syrup = (function(window, lenient){
 				});
 			}
 		},
-		Constructors:{
+		Constructors:Object.create({
 			standard:function(tag, a, b, c, d, e, f, g, h, i, j, k){
 				var self = this;
 				this.uid = Syrup.Tools.uid();
@@ -189,8 +190,8 @@ var Syrup = (function(window, lenient){
 				});
 				self.trigger("constructed");
 			}
-		},
-		Destructors:{
+		}),
+		Destructors:Object.create({
 			standard:function(){
 				var self = this;
 				var element = this.element;
@@ -243,7 +244,7 @@ var Syrup = (function(window, lenient){
 					});					
 				}
 			}
-		},
+		}),
 		Additions:{
 			add:function(item){
 				var self = this;
@@ -351,8 +352,8 @@ var Syrup = (function(window, lenient){
 					},
 					// object:function(item){
 					// },
-					string:function(str){},
-					html:function(str){},
+					// string:function(str){},
+					// html:function(str){},
 					undefined:function(){
 						self.trigger("destructed");
 						Syrup.Destructors.standard.call(self);
