@@ -134,7 +134,7 @@
 </html>
 ```
 #### Rendered result
-![Example Output](/Examples/Github/example-output.png)
+![Example Output](https://github.com/Hedzer/Simple-Syrup/blob/master/Examples/Github/example-output.png?raw=true)
 #### DOM result
 ```html
 <div div style="border: thick; padding: 10px;">
