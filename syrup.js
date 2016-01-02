@@ -86,18 +86,18 @@ var Syrup = (function(window, lenient){
 				var method = additions[key];
 				prototype[key] = method;
 			});
-			Syrup.Classes[tag] = method;
+			Syrup.Elements[tag] = method;
 			Syrup.Prototypes[tag] = prototype;
 		},
 		addClass:function(oClass, as){
-			Syrup.Classes[as] = oClass;
+			Syrup.Elements[as] = oClass;
 		},
 		initialize:function(inside){
 			if (initialized){return container;}
-			if (!Syrup.Classes.element){
+			if (!Syrup.Elements.element){
 				function element(){}
 				element.prototype = Syrup.Prototypes.element;
-				Syrup.Classes.element = element;
+				Syrup.Elements.element = element;
 			}
 			Syrup.tags.forEach(Syrup.addTag.bind(Syrup));
 			initialized = true;
@@ -107,8 +107,8 @@ var Syrup = (function(window, lenient){
 		pollute:function(inside){
 			inside = (inside || window);
 			container = inside;
-			Object.keys(Syrup.Classes).forEach(function(key){
-				container[key] = Syrup.Classes[key];
+			Object.keys(Syrup.Elements).forEach(function(key){
+				container[key] = Syrup.Elements[key];
 			});
 		},
 		Tools:{
@@ -122,7 +122,7 @@ var Syrup = (function(window, lenient){
 					if (u === null){return "null"}
 					if (u.constructor === Array){return "array"}
 					if (u instanceof Element){return "element"}
-					if (u instanceof Syrup.Classes.element){return "syrup"}
+					if (u instanceof Syrup.Elements.element){return "syrup"}
 					if (u instanceof RegExp){return "regex"}
 				}
 				if (t === "string"){
@@ -177,7 +177,7 @@ var Syrup = (function(window, lenient){
 					}
 				});
 				this.class = tag;
-				var inline = new Syrup.Classes.inlineStyle(this);
+				var inline = new Syrup.Elements.inlineStyle(this);
 				delete this.style;
 				this.style = inline;
 				Object.keys(Syrup.Constructors).forEach(function(name){
@@ -536,7 +536,7 @@ var Syrup = (function(window, lenient){
 				return prototype;
 			})()
 		},
-		Classes:{
+		Elements:{
 			inlineStyle:(function(){
 				var sheetEquivalent = {};
 				var capitalized = function(style){return style.charAt(0).toUpperCase() + style.slice(1);};
