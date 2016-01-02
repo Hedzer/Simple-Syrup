@@ -135,9 +135,21 @@ The following creates a "card" element.  This element is a div with three child 
 ![Example Output](/Examples/Github/example-output.png)
 ###### DOM Result
 ```html
-<div div card style="border-color: green;">
-	<div div class="Header card-element">Header</div>
-	<div div class="Body card-element"></div>
-	<div div class="Footer card-element"></div>
+<div div style="border: thick; padding: 10px;">
+	<div div card style="border: solid red;">
+		<div div class="Header card-element">I'm Red</div>
+		<div div class="Body card-element"></div>
+		<div div class="Footer card-element"></div>
+	</div>
+	<div div card style="border: solid blue;">
+		<div div class="Header card-element">I'm Blue</div>
+		<div div class="Body card-element"></div>
+		<div div class="Footer card-element"></div>
+	</div>
+	<div div card style="border: solid yellow;">
+		<div div class="Header card-element">I'm Yellow</div>
+		<div div class="Body card-element"></div>
+		<div div class="Footer card-element"></div>
+	</div>
 </div>
 ```
