@@ -179,41 +179,46 @@ That's it! you can now add custom properties, methods, events or elements to it 
 ```
 Would allow for the `id` property to be monitored for change. <br><br> Inline styles are also monitored for change.  These trigger "[style name]StyleChanged", e.g. `borderStyleChanged` would trigger when `box.style.border = "solid green"` is run.
 #### Added properties & methods
-##### element.add(item)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; element.add(item)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The add method can do many things.  It can:
 * Add a syrup element to the current one.
 * If passed a string will add a property with that string as its name.
 * If passed an HTML string will add it as HTML.
 * If passed an array will add each item accordingly (can be mixed types).
 * If passed an already instantiated element (using `document.createElement`) it will add it.
-<br>
-##### element.addTo(item)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; element.addTo(item)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The addTo method accepts one of two types of arguments, a Syrup element or an instantiated javascript element.
 * If passed a Syrup element will add itself to that element.
 * If passed an already instantiated element will add itself to that. This includes `document.body`, for example.
-<br>
-##### element.remove()
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; element.remove()
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remove will eventually also be overloaded. For now it's only use is with no argument.  Running `element.remove()` will remove `element` from the DOM and any parent references made with the `parent.add(element).as(name)` chain. 
-<br>
-##### element.on(eventName, method)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; element.on(eventName, method)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method has two parameters.  The `eventName` and the `method` parameter.  As can be guessed, this method creates an event listener for the event `eventName` and adds `method` to the list of functions to be triggered when the event occurs.  `eventName` can also be an array; this will bind `method` to all events `eventName[]`.
-##### element.trigger(eventName, data)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; element.trigger(eventName, data)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This method triggers event `eventName` with data `data`.
-<br>
-##### element.find(what)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; element.find(what)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This method is used for searching and accepts several types of parameters.
 *  If passed a boolean, returns all children of the Syrup element as an array.
 *  If passed a string will search for elements within this Syrup element using `querySelectorAll`.  This returns an array of matching `HTMLElements`.
 *  If passed a regex value, the method will do a search through the 'innerText' of each added Syrup element.  It returns an array with matching elements.
 *  If given an instantiated or un-instantiated Syrup element, the method will return a filtered list containing only children that are of that type or that have inherited that type.
 *  If passed an array, will perform all searches within that array and return an array with each value containing an array of results corresponding to the query.
-<br>
-##### element.with(method)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; element.with(method)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The with method runs a function under the context of the current Syrup element.  `with` also accepts an array, which will run all given methods using the `element` as context.
-<br>
+
 #### Events
-##### Adding an event listener
-##### Triggering an event
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adding an event listener
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Triggering an event
+
 
 #### Plugins
 ### ES6/Class concerns
