@@ -87,17 +87,46 @@ The following creates a "card" element.  This element is a div with three child 
 	</head>
 		<body>
 			<script type="text/javascript">
-			(function(window, Syrup){
-				'use strict';
+				(function(window, Syrup){
+					'use strict';
 
-			    //shorthands
-			    var card = Syrup.Elements.card;
-			    //end shorthands
+				    //shorthands
+				    var div = Syrup.Elements.div;
+				    var card = Syrup.Elements.card;
+				    //end shorthands
 
-			    var example = new card(); //create a new instance
-			    example.addTo(document.body); //add it to body
+				    var box = new div();  //create a new div instance
+				    box.style.inline = {  //set the inline style
+				    	border:"thick",
+				    	padding:"10px"
+				    };
+				    box
+				    	.add(new card())  //add a card
+				    	.as("RedCard")    //call it RedCard
+				    	.with(function(){
+				    		//setting an individual style
+				    		this.style.border = "solid red";
+				    	});
+				    box
+				    	.add(new card())  //add a card
+				    	.as("BlueCard")   //call it BlueCard
+				    	.with(function(){
+				    		this.style.border = "solid blue";
+				    	});
+				    box
+				    	.add(new card())  //add a card
+				    	.as("YellowCard")    //call it YellowCard
+				    	.with(function(){
+				    		this.style.border = "solid yellow";
+				    	});
 
-			})(window, Syrup)
+				    //going deep to change details
+				    box.RedCard.Header.innerText = "I'm Red";
+				    box.BlueCard.Header.innerText = "I'm Blue";
+				    box.YellowCard.Header.innerText = "I'm Yellow";
+
+				    box.addTo(document.body); //add it to body
+				})(window, Syrup)
 			</script>
 		</body>
 </html>
@@ -106,9 +135,9 @@ The following creates a "card" element.  This element is a div with three child 
 ![Example Output](/Examples/Github/example-output.png)
 ###### DOM Result
 ```html
-<div div="" card="" style="border-color: green;">
-	<div div="" class="Header card-element">Header</div>
-	<div div="" class="Body card-element"></div>
-	<div div="" class="Footer card-element"></div>
+<div div card style="border-color: green;">
+	<div div class="Header card-element">Header</div>
+	<div div class="Body card-element"></div>
+	<div div class="Footer card-element"></div>
 </div>
 ```
