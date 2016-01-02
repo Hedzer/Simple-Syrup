@@ -97,7 +97,7 @@ The following creates a "card" element.  This element is a div with three child 
 
 				    var box = new div();  //create a new div instance
 				    box.style.inline = {  //set the inline style
-				    	border:"thick",
+				    	border:"solid",
 				    	padding:"10px"
 				    };
 				    box
