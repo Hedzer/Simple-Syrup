@@ -492,13 +492,11 @@ var Syrup = (function(window, lenient){
 						results = (!results || results === null ? [] : results);
 						return results;
 					},
-					boolean:function(value){
+					undefined:function(){
 						var results = [];
-						if (value){
-							eachChild(function(child){
-								results.push(child);
-							});
-						}
+						eachChild(function(child){
+							results.push(child);
+						});
 						return results;
 					}
 				};
