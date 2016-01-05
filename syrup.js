@@ -160,6 +160,17 @@ var Syrup = (function(window, lenient){
 					configurable:true,
 					enumerable:true
 				});
+			},
+			Events:{
+				remove:function(){
+					delete this.pool[this.id];
+				},
+				removeAll:function(){
+					var self = this;
+					Object.keys(this.pool).forEach(function(eid){
+						delete self.pool[eid];
+					});
+				}
 			}
 		},
 		Constructors:Object.create({
@@ -396,9 +407,10 @@ var Syrup = (function(window, lenient){
 							pool[eid] = method;
 						}
 						var handle = {
-							remove:function(){
-								delete pool[eid];
-							}
+							id:eid,
+							pool:pool,
+							remove:Syrup.Tools.Events.remove,
+							removeAll:Syrup.Tools.Events.removeAll
 						};
 						return handle;
 					}
