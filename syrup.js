@@ -56,9 +56,8 @@ var Syrup = (function(window){
 		tags:Object.keys(HTMLSpec),
 		addTag:function(tag){
 			var element = document.createElement(tag);
-			var method = Function('return function '+tag+'(){\
-				var args = Array.prototype.slice.call(arguments);\
-				Syrup.Constructors.standard.apply(this, [\''+tag+'\'].concat(args));\
+			var method = Function('return function '+tag+'(a, b, c, d, e, f, g, h, i, j, k){\
+				Syrup.Constructors.standard.call(this, \''+tag+'\', a, b, c, d, e, f, g, h, i, j, k);\
 			}')();
 			var primordial = Syrup.Prototypes.element;
 			var prototype = Object.create(primordial);
@@ -175,9 +174,7 @@ var Syrup = (function(window){
 			}
 		},
 		Constructors:Object.create({
-			standard:function(){
-				var args = Array.prototype.slice.call(arguments);
-				var tag = args.shift();
+			standard:function(tag, a, b, c, d, e, f, g, h, i, j, k){
 				var self = this;
 				this.uid = Syrup.Tools.uid();
 				this.element = document.createElement(tag);
@@ -199,7 +196,7 @@ var Syrup = (function(window){
 					if (name === "standard"){return;}
 					var constructor = Syrup.Constructors[name];
 					if (typeof constructor === "function"){
-						constructor.apply(self, args);
+						constructor.call(self, a, b, c, d, e, f, g, h, i, j, k);
 					}
 				});
 				self.trigger("constructed");
@@ -397,11 +394,10 @@ var Syrup = (function(window){
 						if (!pool){
 							events[name] = {};
 							pool = events[name];
-							var hook = function(){
-								var args = Array.prototype.slice.call(arguments);
+							var hook = function(a,b,c,d,e,f,g,h,i,j,k){
 								Object.keys(pool).forEach(function(id){
 									var method = pool[id];
-									method.apply(self, args);
+									method.call(self, a,b,c,d,e,f,g,h,i,j,k);
 								});
 							};
 							self.element.addEventListener(name, hook, false);
