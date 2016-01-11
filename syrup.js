@@ -113,10 +113,18 @@ var Syrup = (function(window){
 			});
 		},
 		Tools:{
-			uid:function(){
-				var now = new Date().valueOf();
-				return now.toString(16)+"-"+parseInt(Math.random()*now).toString(16);
-			},
+			uid:(function(){
+				var prefix = "";
+				var current = 0;
+				var max = Number.MAX_SAFE_INTEGER - 5;
+				return function uid(){
+					if (current > max){
+						prefix+=current;
+						current = 0;
+					}
+					return prefix+current++;
+				}				
+			})(),
 			getType:function(u){
 				var t = typeof u;
 				if (t === "object"){
