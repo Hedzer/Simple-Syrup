@@ -5,14 +5,7 @@
 ### Getting started
 #### HTML
 ```html
-<!DOCTYPE html>
-<html>
-	<head>
-        <script src="syrup.js"></script>
-    </head>
-		<body>
-		</body>
-</html>
+	<script type="text/javascript" src="syrup.js"></script>
 ```
 #### Creating a new element
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following creates a `card` element.  This element is a div with three child divs (Header, Body, Footer).
