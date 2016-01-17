@@ -47,14 +47,7 @@
 <h4>
 <a id="html" class="anchor" href="#html" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML</h4>
 
-<div class="highlight highlight-text-html-basic"><pre>&lt;!DOCTYPE html&gt;
-&lt;<span class="pl-ent">html</span>&gt;
-    &lt;<span class="pl-ent">head</span>&gt;
-<span class="pl-s1">        &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>syrup.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
-    &lt;/<span class="pl-ent">head</span>&gt;
-        &lt;<span class="pl-ent">body</span>&gt;
-        &lt;/<span class="pl-ent">body</span>&gt;
-&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>syrup.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
 
 <h4>
 <a id="creating-a-new-element" class="anchor" href="#creating-a-new-element" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a new element</h4>
@@ -94,7 +87,6 @@
         <span class="pl-en">constructor</span>(){
             <span class="pl-c">//standard calls</span>
             <span class="pl-v">super</span>();
-            <span class="pl-k">var</span> self <span class="pl-k">=</span> <span class="pl-v">this</span>;
             <span class="pl-v">this</span>.<span class="pl-smi">class</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>card<span class="pl-pds">"</span></span>;
             <span class="pl-v">this</span>.<span class="pl-c1">style</span>.<span class="pl-smi">sheet</span> <span class="pl-k">=</span> style; <span class="pl-c">//produces a stylesheet if there isn't one</span>
             <span class="pl-v">this</span>.<span class="pl-c1">style</span>.<span class="pl-c1">borderColor</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>green<span class="pl-pds">"</span></span>; <span class="pl-c">//writes to the inline style</span>
