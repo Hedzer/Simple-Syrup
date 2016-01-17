@@ -43,7 +43,6 @@
 		constructor(){
 			//standard calls
 			super();
-			var self = this;
 			this.class = "card";
 			this.style.sheet = style; //produces a stylesheet if there isn't one
 			this.style.borderColor = "green"; //writes to the inline style
