@@ -142,6 +142,20 @@ var Syrup = (function(window){
 				}
 				return t;
 			},
+			getAllPropertyNames:(function(){
+				var oProto = Object.getPrototypeOf({});
+				return function getAllPropertyNames(obj) {
+					var props = [];
+					do {
+						Object.getOwnPropertyNames(obj).forEach(function(prop) {
+							if (props.indexOf(prop) === -1) {
+								props.push(prop);
+							}
+						});
+					} while ((obj = Object.getPrototypeOf(obj)) && obj !== oProto);
+					return props;
+				};
+			})(),
 			addElementProperty:addElementProperty,
 			addEventedProperty:function(host, name, defaultValue){
 				var value = defaultValue;
@@ -645,7 +659,7 @@ var Syrup = (function(window){
 							var isNew = false;
 							var createRule = function(selector, styles){
 								var added = "";
-								Object.keys(styles).forEach(function(style){
+								Syrup.Tools.getAllPropertyNames(styles).forEach(function(style){
 									var val = styles[style];
 									added+=(sheetEquivalent[style] || style)+":"+val+";";
 								});
@@ -654,13 +668,13 @@ var Syrup = (function(window){
 								return rule;
 							};
 							var setStyles = function(){
-								Object.keys(value).forEach(function(selector){
+								Syrup.Tools.getAllPropertyNames(value).forEach(function(selector){
 									var styles = value[selector];
 									var added = "\n";
 									var mediaQuery = "";
 									if (selector.trim()[0] === "@"){
 										mediaQuery = selector;
-										Object.keys(styles).forEach(function(mqSelector){
+										Syrup.Tools.getAllPropertyNames(styles).forEach(function(mqSelector){
 											var mqSelectedStyles = styles[mqSelector];
 											if (typeof mqSelectedStyles === "object" && mqSelectedStyles.constructor !== Array){
 												var rule = createRule(mqSelector, mqSelectedStyles);
@@ -751,7 +765,7 @@ var Syrup = (function(window){
 					set:function(value){
 						if (typeof value === "object" && value.constructor != Array){
 							var self = this;
-							Object.keys(value).forEach(function(style){
+							Syrup.Tools.getAllPropertyNames(value).forEach(function(style){
 								var val = value[style];
 								self[style] = val;
 							});
