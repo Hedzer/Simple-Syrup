@@ -145,6 +145,7 @@ var Syrup = (function(window){
 			getAllPropertyNames:(function(){
 				var oProto = Object.getPrototypeOf({});
 				return function getAllPropertyNames(obj) {
+					//code modified from airportyh, http://stackoverflow.com/questions/8024149/is-it-possible-to-get-the-non-enumerable-inherited-property-names-of-an-object
 					var props = [];
 					do {
 						Object.getOwnPropertyNames(obj).forEach(function(prop) {
