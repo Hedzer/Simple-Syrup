@@ -23,7 +23,11 @@ var Syrup = (function(window){
 		}, 0);
 		return decompressed;
 	})();
+	var blacklist = ['remove'];
 	var addElementProperty = function(host, name){
+		if (~blacklist.indexOf(name)){
+			return;
+		}
 		Object.defineProperty(host, name, {
 			get:function(){
 				return this.element[name];
@@ -96,9 +100,11 @@ var Syrup = (function(window){
 				Syrup.Prototypes.element[key] = method;
 			});
 			if (!Syrup.Elements.element){
-				function element(){}
-				element.prototype = Syrup.Prototypes.element;
-				Syrup.Elements.element = element;
+				(function(){
+					function element(){}
+					element.prototype = Syrup.Prototypes.element;
+					Syrup.Elements.element = element;					
+				})();
 			}
 			Syrup.tags.forEach(Syrup.addTag.bind(Syrup));
 			initialized = true;
